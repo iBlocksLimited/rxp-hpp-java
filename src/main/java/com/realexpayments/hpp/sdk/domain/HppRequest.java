@@ -33,7 +33,7 @@ import com.realexpayments.hpp.sdk.validators.OtbAmount;
  * 	.addMerchantId("merchantId");
  * </pre></code>
  * </p>
- * 
+ *
  * @author markstanford
  */
 @JsonInclude(Include.NON_NULL)
@@ -45,13 +45,13 @@ public class HppRequest {
 		FALSE("0");
 
 		/**
-		 * The flag String value 
+		 * The flag String value
 		 */
 		private final String flag;
 
 		/**
 		 * Flag constructor
-		 * 
+		 *
 		 * @param type
 		 */
 		Flag(String flag) {
@@ -60,8 +60,8 @@ public class HppRequest {
 
 		/**
 		 * Get the string value of the flag
-		 * 
-		 * @return String 
+		 *
+		 * @return String
 		 */
 		public String getFlag() {
 			return flag;
@@ -93,7 +93,7 @@ public class HppRequest {
 	private String orderId;
 
 	/**
-	 * Total amount to authorise in the lowest unit of the currency – i.e. 100 euro would be entered as 10000. 
+	 * Total amount to authorise in the lowest unit of the currency – i.e. 100 euro would be entered as 10000.
 	 * If there is no decimal in the currency (e.g. JPY Yen) then contact Realex Payments. No decimal points are allowed.
 	 * Amount should be set to 0 for OTB transactions (i.e. where validate card only is set to 1).
 	 */
@@ -127,10 +127,10 @@ public class HppRequest {
 	private String hash;
 
 	/**
-	 * Used to signify whether or not you wish the transaction to be captured in the next batch. 
-	 * If set to "1" and assuming the transaction is authorised then it will automatically be settled in the next batch. 
-	 * If set to "0" then the merchant must use the RealControl application to manually settle the transaction. 
-	 * This option can be used if a merchant wishes to delay the payment until after the goods have been shipped. 
+	 * Used to signify whether or not you wish the transaction to be captured in the next batch.
+	 * If set to "1" and assuming the transaction is authorised then it will automatically be settled in the next batch.
+	 * If set to "0" then the merchant must use the RealControl application to manually settle the transaction.
+	 * This option can be used if a merchant wishes to delay the payment until after the goods have been shipped.
 	 * Transactions can be settled for up to 115% of the original amount and must be settled within a certain period of time agreed with your issuing bank.
 	 */
 	@Pattern(regexp = "(?i)^on*|^off$|^*$|^multi$|^1$|^0$", message = "{hppRequest.autoSettleFlag.pattern}")
@@ -154,8 +154,8 @@ public class HppRequest {
 	private String commentTwo;
 
 	/**
-	 * Used to signify whether or not you want a Transaction Suitability Score for this transaction. 
-	 * Can be "0" for no and "1" for yes. 
+	 * Used to signify whether or not you want a Transaction Suitability Score for this transaction.
+	 * Can be "0" for no and "1" for yes.
 	 */
 	@Size(min = 0, max = 1, message = "{hppRequest.returnTss.size}")
 	@Pattern(regexp = "^[01]*$", message = "{hppRequest.returnTss.pattern}")
@@ -195,7 +195,7 @@ public class HppRequest {
 	private String billingCountry;
 
 	/**
-	 * The customer number of the customer. You can send in any additional information about the transaction in this field, 
+	 * The customer number of the customer. You can send in any additional information about the transaction in this field,
 	 * which will be visible under the transaction in the RealControl application.
 	 */
 	@Size(min = 0, max = 50, message = "{hppRequest.customerNumber.size}")
@@ -204,7 +204,7 @@ public class HppRequest {
 	private String customerNumber;
 
 	/**
-	 * A variable reference also associated with this customer. You can send in any additional information about the transaction in this field, 
+	 * A variable reference also associated with this customer. You can send in any additional information about the transaction in this field,
 	 * which will be visible under the transaction in the RealControl application.
 	 */
 	@Size(min = 0, max = 50, message = "{hppRequest.variableReference.size}")
@@ -213,7 +213,7 @@ public class HppRequest {
 	private String variableReference;
 
 	/**
-	 * A product id associated with this product. You can send in any additional information about the transaction in this field, 
+	 * A product id associated with this product. You can send in any additional information about the transaction in this field,
 	 * which will be visible under the transaction in the RealControl application.
 	 */
 	@Size(min = 0, max = 50, message = "{hppRequest.productId.size}")
@@ -222,7 +222,7 @@ public class HppRequest {
 	private String productId;
 
 	/**
-	 * Used to set what language HPP is displayed in. Currently HPP is available in English, Spanish and German, with other languages to follow. 
+	 * Used to set what language HPP is displayed in. Currently HPP is available in English, Spanish and German, with other languages to follow.
 	 * If the field is not sent in, the default language is the language that is set in your account configuration. This can be set by your account manager.
 	 */
 	@Pattern(regexp = "^[a-zA-Z]{2}(_([a-zA-Z]{2}){1})?$|^$", message = "{hppRequest.language.pattern}")
@@ -270,7 +270,7 @@ public class HppRequest {
 	private String paymentReference;
 
 	/**
-	 * Flag to indicate if the payer exists. 
+	 * Flag to indicate if the payer exists.
 	 */
 	@Size(min = 0, max = 1, message = "{hppRequest.payerExists.size}")
 	@Pattern(regexp = "^[102]*$", message = "{hppRequest.payerExists.pattern}")
@@ -278,7 +278,7 @@ public class HppRequest {
 	private String payerExists;
 
 	/**
-	 * Supplementary data to be sent to Realex Payments. This will be returned in the HPP response. 
+	 * Supplementary data to be sent to Realex Payments. This will be returned in the HPP response.
 	 */
 	private Map<String, String> supplementaryData = new HashMap<String, String>();
 
@@ -326,7 +326,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for merchant ID.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getMerchantId() {
@@ -335,7 +335,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for account.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getAccount() {
@@ -344,7 +344,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for order ID.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getOrderId() {
@@ -353,7 +353,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for amount.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getAmount() {
@@ -362,7 +362,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for currency.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getCurrency() {
@@ -371,7 +371,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for time stamp.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getTimeStamp() {
@@ -380,7 +380,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for hash.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getHash() {
@@ -389,7 +389,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for auto settle flag.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getAutoSettleFlag() {
@@ -398,7 +398,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for comment one.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getCommentOne() {
@@ -407,7 +407,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for comment two.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getCommentTwo() {
@@ -416,7 +416,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for return TSS flag.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getReturnTss() {
@@ -424,8 +424,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Getter for shipping code. 
-	 * 
+	 * Getter for shipping code.
+	 *
 	 * @return String
 	 */
 	public String getShippingCode() {
@@ -434,7 +434,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for shipping country.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getShippingCountry() {
@@ -442,8 +442,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Getter for billing code. 
-	 * 
+	 * Getter for billing code.
+	 *
 	 * @return String
 	 */
 	public String getBillingCode() {
@@ -452,7 +452,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for billing country.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getBillingCountry() {
@@ -461,7 +461,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for customer number.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getCustomerNumber() {
@@ -469,8 +469,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Getter for variable reference. 
-	 * 
+	 * Getter for variable reference.
+	 *
 	 * @return String
 	 */
 	public String getVariableReference() {
@@ -479,7 +479,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for product ID.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getProductId() {
@@ -488,7 +488,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for language.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getLanguage() {
@@ -497,7 +497,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for card payment button text.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getCardPaymentButtonText() {
@@ -506,7 +506,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for card storage enable flag.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getCardStorageEnable() {
@@ -515,7 +515,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for offer to save card.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getOfferSaveCard() {
@@ -524,7 +524,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for payer reference.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getPayerReference() {
@@ -533,7 +533,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for payment reference.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getPaymentReference() {
@@ -541,8 +541,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Getter for payer exists. 
-	 * 
+	 * Getter for payer exists.
+	 *
 	 * @return String
 	 */
 	public String getPayerExists() {
@@ -550,8 +550,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Getter for validate card only. 
-	 * 
+	 * Getter for validate card only.
+	 *
 	 * @return String
 	 */
 	public String getValidateCardOnly() {
@@ -560,7 +560,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for DCC enable flag.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getDccEnable() {
@@ -569,7 +569,7 @@ public class HppRequest {
 
 	/**
 	 * Getter for HPP fraud filter mode flag.
-	 * 
+	 *
 	 * @return String
 	 */
 	public String getHppFraudFilterMode() {
@@ -578,7 +578,7 @@ public class HppRequest {
 
 	/**
 	 * Setter for merchant ID.
-	 * 
+	 *
 	 * @param merchantId
 	 */
 	public void setMerchantId(String merchantId) {
@@ -586,8 +586,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Setter for account. 
-	 * 
+	 * Setter for account.
+	 *
 	 * @param account
 	 */
 	public void setAccount(String account) {
@@ -596,7 +596,7 @@ public class HppRequest {
 
 	/**
 	 * Setter for order ID.
-	 * 
+	 *
 	 * @param orderId
 	 */
 	public void setOrderId(String orderId) {
@@ -604,8 +604,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Setter for amount. 
-	 * 
+	 * Setter for amount.
+	 *
 	 * @param amount
 	 */
 	public void setAmount(String amount) {
@@ -614,7 +614,7 @@ public class HppRequest {
 
 	/**
 	 * Setter for currency.
-	 * 
+	 *
 	 * @param currency
 	 */
 	public void setCurrency(String currency) {
@@ -623,7 +623,7 @@ public class HppRequest {
 
 	/**
 	 * Setter for time stamp.
-	 * 
+	 *
 	 * @param timeStamp
 	 */
 	public void setTimeStamp(String timeStamp) {
@@ -632,7 +632,7 @@ public class HppRequest {
 
 	/**
 	 * Setter for hash.
-	 * 
+	 *
 	 * @param hash
 	 */
 	public void setHash(String hash) {
@@ -641,7 +641,7 @@ public class HppRequest {
 
 	/**
 	 * Setter for auto settle flag.
-	 * 
+	 *
 	 * @param autoSettleFlag
 	 */
 	public void setAutoSettleFlag(String autoSettleFlag) {
@@ -649,8 +649,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Setter for comment one. 
-	 * 
+	 * Setter for comment one.
+	 *
 	 * @param commentOne
 	 */
 	public void setCommentOne(String commentOne) {
@@ -658,8 +658,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Setter for comment two. 
-	 * 
+	 * Setter for comment two.
+	 *
 	 * @param commentTwo
 	 */
 	public void setCommentTwo(String commentTwo) {
@@ -668,7 +668,7 @@ public class HppRequest {
 
 	/**
 	 * Setter for return TSS.
-	 * 
+	 *
 	 * @param returnTss
 	 */
 	public void setReturnTss(String returnTss) {
@@ -676,8 +676,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Setter for shipping code. 
-	 * 
+	 * Setter for shipping code.
+	 *
 	 * @param shippingCode
 	 */
 	public void setShippingCode(String shippingCode) {
@@ -686,7 +686,7 @@ public class HppRequest {
 
 	/**
 	 * Setter for shipping country.
-	 * 
+	 *
 	 * @param shippingCountry
 	 */
 	public void setShippingCountry(String shippingCountry) {
@@ -694,8 +694,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Setter for billing code. 
-	 * 
+	 * Setter for billing code.
+	 *
 	 * @param billingCode
 	 */
 	public void setBillingCode(String billingCode) {
@@ -704,7 +704,7 @@ public class HppRequest {
 
 	/**
 	 * Setter for billing country.
-	 * 
+	 *
 	 * @param billingCountry
 	 */
 	public void setBillingCountry(String billingCountry) {
@@ -712,8 +712,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Setter for customer number. 
-	 * 
+	 * Setter for customer number.
+	 *
 	 * @param customerNumber
 	 */
 	public void setCustomerNumber(String customerNumber) {
@@ -721,8 +721,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Setter for variable reference. 
-	 * 
+	 * Setter for variable reference.
+	 *
 	 * @param variableReference
 	 */
 	public void setVariableReference(String variableReference) {
@@ -731,7 +731,7 @@ public class HppRequest {
 
 	/**
 	 * Setter for product ID.
-	 * 
+	 *
 	 * @param productId
 	 */
 	public void setProductId(String productId) {
@@ -739,8 +739,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Setter for language. 
-	 * 
+	 * Setter for language.
+	 *
 	 * @param language
 	 */
 	public void setLanguage(String language) {
@@ -748,8 +748,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Setter for card payment button text. 
-	 * 
+	 * Setter for card payment button text.
+	 *
 	 * @param cardPaymentButtonText
 	 */
 	public void setCardPaymentButtonText(String cardPaymentButtonText) {
@@ -757,8 +757,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Setter for card storage enable flag. 
-	 * 
+	 * Setter for card storage enable flag.
+	 *
 	 * @param cardStorageEnable
 	 */
 	public void setCardStorageEnable(String cardStorageEnable) {
@@ -766,8 +766,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Setter for offer to save card. 
-	 * 
+	 * Setter for offer to save card.
+	 *
 	 * @param offerSaveCard
 	 */
 	public void setOfferSaveCard(String offerSaveCard) {
@@ -775,8 +775,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Setter for payer reference. 
-	 * 
+	 * Setter for payer reference.
+	 *
 	 * @param payerReference
 	 */
 	public void setPayerReference(String payerReference) {
@@ -785,7 +785,7 @@ public class HppRequest {
 
 	/**
 	 * Setter for payment reference.
-	 * 
+	 *
 	 * @param paymentReference
 	 */
 	public void setPaymentReference(String paymentReference) {
@@ -793,8 +793,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Setter for payer exists. 
-	 * 
+	 * Setter for payer exists.
+	 *
 	 * @param payerExists
 	 */
 	public void setPayerExists(String payerExists) {
@@ -803,7 +803,7 @@ public class HppRequest {
 
 	/**
 	 * Setter for validate card only.
-	 * 
+	 *
 	 * @param validateCardOnly
 	 */
 	public void setValidateCardOnly(String validateCardOnly) {
@@ -812,7 +812,7 @@ public class HppRequest {
 
 	/**
 	 * Setter for DCC enable flag.
-	 * 
+	 *
 	 * @param dccEnable
 	 */
 	public void setDccEnable(String dccEnable) {
@@ -821,7 +821,7 @@ public class HppRequest {
 
 	/**
 	 * Setter for HPP fraud filter mode flag.
-	 * 
+	 *
 	 * @param hppFraudFilterMode
 	 */
 	public void setHppFraudFilterMode(String hppFraudFilterMode) {
@@ -830,7 +830,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add merchant ID.
-	 * 
+	 *
 	 * @param merchantId
 	 * @return HppRequest
 	 */
@@ -840,8 +840,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Helper method to add account. 
-	 * 
+	 * Helper method to add account.
+	 *
 	 * @param account
 	 * @return HppRequest
 	 */
@@ -852,7 +852,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add order ID.
-	 * 
+	 *
 	 * @param orderId
 	 * @return HppRequest
 	 */
@@ -863,7 +863,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add amount.
-	 * 
+	 *
 	 * @param amount
 	 * @return HppRequest
 	 */
@@ -874,7 +874,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add amount.
-	 * 
+	 *
 	 * @param amount
 	 * @return HppRequest
 	 */
@@ -885,7 +885,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add currency.
-	 * 
+	 *
 	 * @param currency
 	 * @return HppRequest
 	 */
@@ -896,7 +896,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add time stamp.
-	 * 
+	 *
 	 * @param timeStamp
 	 * @return HppRequest
 	 */
@@ -907,7 +907,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add hash.
-	 * 
+	 *
 	 * @param hash
 	 * @return HppRequest
 	 */
@@ -918,7 +918,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add autop settle flag.
-	 * 
+	 *
 	 * @param autoSettleFlag
 	 * @return HppRequest
 	 */
@@ -929,7 +929,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add auto settle flag.
-	 * 
+	 *
 	 * @param autoSettleFlag
 	 * @return HppRequest
 	 */
@@ -939,8 +939,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Helper method to add comment one. 
-	 * 
+	 * Helper method to add comment one.
+	 *
 	 * @param commentOne
 	 * @return HppRequest
 	 */
@@ -951,7 +951,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add comment two.
-	 * 
+	 *
 	 * @param commentTwo
 	 * @return HppRequest
 	 */
@@ -962,7 +962,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add return TSS.
-	 * 
+	 *
 	 * @param returnTss
 	 * @return HppRequest
 	 */
@@ -973,7 +973,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add return TSS.
-	 * 
+	 *
 	 * @param returnTss
 	 * @return HppRequest
 	 */
@@ -983,8 +983,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Helper method to add shipping code. 
-	 * 
+	 * Helper method to add shipping code.
+	 *
 	 * @param shippingCode
 	 * @return HppRequest
 	 */
@@ -995,7 +995,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add hipping country.
-	 * 
+	 *
 	 * @param shippingCountry
 	 * @return HppRequest
 	 */
@@ -1005,8 +1005,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Helper method to add billing code. 
-	 * 
+	 * Helper method to add billing code.
+	 *
 	 * @param billingCode
 	 * @return HppRequest
 	 */
@@ -1017,7 +1017,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add billing country.
-	 * 
+	 *
 	 * @param billingCountry
 	 * @return HppRequest
 	 */
@@ -1027,8 +1027,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Helper method to add customer number. 
-	 * 
+	 * Helper method to add customer number.
+	 *
 	 * @param customerNumber
 	 * @return HppRequest
 	 */
@@ -1038,8 +1038,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Helper method to add variable reference. 
-	 * 
+	 * Helper method to add variable reference.
+	 *
 	 * @param variableReference
 	 * @return HppRequest
 	 */
@@ -1050,7 +1050,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add product ID.
-	 * 
+	 *
 	 * @param productId
 	 * @return HppRequest
 	 */
@@ -1061,7 +1061,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add language.
-	 * 
+	 *
 	 * @param language
 	 * @return HppRequest
 	 */
@@ -1072,7 +1072,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add card payment button text.
-	 * 
+	 *
 	 * @param cardPaymentButtonText
 	 * @return HppRequest
 	 */
@@ -1083,7 +1083,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add card storage enable flag.
-	 * 
+	 *
 	 * @param cardStorageEnable
 	 * @return HppRequest
 	 */
@@ -1094,7 +1094,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add card storage enable flag.
-	 * 
+	 *
 	 * @param cardStorageEnable
 	 * @return HppRequest
 	 */
@@ -1105,7 +1105,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add offer to save card.
-	 * 
+	 *
 	 * @param offerSaveCard
 	 * @return HppRequest
 	 */
@@ -1116,7 +1116,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add offer to save card.
-	 * 
+	 *
 	 * @param offerSaveCard
 	 * @return HppRequest
 	 */
@@ -1127,7 +1127,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add payer reference.
-	 * 
+	 *
 	 * @param payerReference
 	 * @return HppRequest
 	 */
@@ -1138,7 +1138,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add payment reference.
-	 * 
+	 *
 	 * @param paymentReference
 	 * @return HppRequest
 	 */
@@ -1149,7 +1149,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add payer exists flag.
-	 * 
+	 *
 	 * @param payerExists
 	 * @return HppRequest
 	 */
@@ -1160,7 +1160,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add payer exists flag.
-	 * 
+	 *
 	 * @param payerExists
 	 * @return HppRequest
 	 */
@@ -1171,7 +1171,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to get supplementary data.
-	 * 
+	 *
 	 * @return Map<String, String>
 	 */
 	@JsonAnyGetter
@@ -1181,7 +1181,7 @@ public class HppRequest {
 
 	/**
 	 * Setter for supplementary data.
-	 * 
+	 *
 	 * @param supplementaryData
 	 */
 	public void setSupplementaryData(Map<String, String> supplementaryData) {
@@ -1190,7 +1190,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add supplementary data.
-	 * 
+	 *
 	 * @param name
 	 * @param value
 	 * @return HppRequest
@@ -1203,7 +1203,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add validate card only flag.
-	 * 
+	 *
 	 * @param validateCardOnly
 	 * @return HppRequest
 	 */
@@ -1214,7 +1214,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add validate card only flag.
-	 * 
+	 *
 	 * @param validateCardOnly
 	 * @return HppRequest
 	 */
@@ -1225,7 +1225,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add DCC enable flag.
-	 * 
+	 *
 	 * @param dccEnable
 	 * @return HppRequest
 	 */
@@ -1236,7 +1236,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add DCC enable flag.
-	 * 
+	 *
 	 * @param dccEnable
 	 * @return HppRequest
 	 */
@@ -1247,7 +1247,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add HPP fraud filter mode flag.
-	 * 
+	 *
 	 * @param hppFraudFilterMode
 	 * @return HppRequest
 	 */
@@ -1258,7 +1258,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add HPP Version flag.
-	 * 
+	 *
 	 * @param hppVersion
 	 * @return HppRequest
 	 */
@@ -1269,7 +1269,7 @@ public class HppRequest {
 
 	/**
 	 * Helper method to add HPP Select stored card.
-	 * 
+	 *
 	 * @param hppSelectStoredCard
 	 * @return HppRequest
 	 */
@@ -1280,7 +1280,7 @@ public class HppRequest {
 
 	/**
 	 * Get hppSelectStoredCard
-	 * 
+	 *
 	 * @return String hppSelectStoredCard
 	 */
 	public String getHppSelectStoredCard() {
@@ -1296,8 +1296,8 @@ public class HppRequest {
 	}
 
 	/**
-	 * Creates the security hash from a number of fields and the shared secret. 
-	 * 
+	 * Creates the security hash from a number of fields and the shared secret.
+	 *
 	 * @param secret
 	 * @return HppRequest
 	 */
@@ -1317,13 +1317,18 @@ public class HppRequest {
 		String payerReference = null == this.payerReference ? "" : this.payerReference;
 		String paymentReference = null == this.paymentReference ? "" : this.paymentReference;
 		String hppFraudFilterMode = null == this.hppFraudFilterMode ? "" : this.hppFraudFilterMode;
+		String hppDisplayCvn = null == this.supplementaryData.get("HPP_DISPLAY_CVN") ? "" :this.supplementaryData.get("HPP_DISPLAY_CVN");
 
-		//create String to hash. Check for card storage enable flag to determine if Real Vault transaction 
+		//create String to hash. Check for card storage enable flag to determine if Real Vault transaction
 		StringBuilder toHash = new StringBuilder();
 
 		if (Flag.TRUE.getFlag().equals(cardStorageEnable) || (hppSelectStoredCard != null && !hppSelectStoredCard.isEmpty())) {
 			toHash.append(timeStamp).append(".").append(merchantId).append(".").append(orderId).append(".").append(amount).append(".")
 					.append(currency).append(".").append(payerReference).append(".").append(paymentReference);
+
+			if(!hppDisplayCvn.equals("") ){
+			  toHash.append(".").append(hppDisplayCvn);
+      }
 
 			if (!hppFraudFilterMode.equals("")) {
 				toHash.append(".").append(this.hppFraudFilterMode);
@@ -1332,6 +1337,10 @@ public class HppRequest {
 		} else {
 			toHash.append(timeStamp).append(".").append(merchantId).append(".").append(orderId).append(".").append(amount).append(".")
 					.append(currency);
+
+      if(!hppDisplayCvn.equals("") ){
+        toHash.append(".").append(hppDisplayCvn);
+      }
 
 			if (!hppFraudFilterMode.equals("")) {
 				toHash.append(".").append(this.hppFraudFilterMode);
@@ -1345,7 +1354,7 @@ public class HppRequest {
 
 	/**
 	 * Generates default values for fields such as hash, timestamp and order ID.
-	 * 
+	 *
 	 * @param secret
 	 * @return HppRequest
 	 */
@@ -1369,10 +1378,10 @@ public class HppRequest {
 
 	/**
 	 * Base64 encodes all Hpp Request values.
-	 * 
+	 *
 	 * @param charset
 	 * @return HppRequest
-	 * @throws UnsupportedEncodingException 
+	 * @throws UnsupportedEncodingException
 	 */
 	public HppRequest encode(String charset) throws UnsupportedEncodingException {
 
@@ -1480,10 +1489,10 @@ public class HppRequest {
 
 	/**
 	 * Base64 decodes all Hpp Request values.
-	 * 
+	 *
 	 * @param charset
 	 * @return HppRequest
-	 * @throws UnsupportedEncodingException 
+	 * @throws UnsupportedEncodingException
 	 */
 	public HppRequest decode(String charset) throws UnsupportedEncodingException {
 
